@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Saby Widget</title>
+</head>
+<body>
+  <!-- BEGIN SABY WIDGET CODE -->
+  <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
+  (
+     function(win, doc, url) {
+        var sws = doc.createElement('script');
+        sws.type = 'text/javascript';
+        sws.async = true;
+        sws.src = url;
+
+        var pfs = doc.getElementsByTagName('script')[0];
+        pfs.parentNode.insertBefore(sws, pfs);
+     }
+  )(window, document, 'https://plugin.sbis.ru/sabyplugin/js/saby-loader.js');
+  </script>
+  <!-- END SABY WIDGET CODE -->
+</body>
+</html>
