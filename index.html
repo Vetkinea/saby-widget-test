@@ -5,23 +5,24 @@
   <title>Saby Widget</title>
 </head>
 <body>
-  <h1>Привет! 👋 Это тестовая страница с виджетом</h1>
-  <p>Если ты это читаешь — GitHub Pages работает, но виджет может не подключаться.</p>
+  <h1>Привет! 👋 Это страница с формой обратной связи</h1>
+  <p>Форма ниже встроена через скрипт от СБИС:</p>
 
   <!-- BEGIN SABY WIDGET CODE -->
   <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
   (
-     function(win, doc, url) {
-        var sws = doc.createElement('script');
-        sws.type = 'text/javascript';
-        sws.async = true;
-        sws.src = url;
+    function(win, doc, url) {
+      var sws = doc.createElement('script');
+      sws.type = 'text/javascript';
+      sws.async = true;
+      sws.src = url;
 
-        var pfs = doc.getElementsByTagName('script')[0];
-        pfs.parentNode.insertBefore(sws, pfs);
-     }
-  )(window, document, 'https://cdn.sbis.ru/sabyplugin/js/saby-loader.js');
+      var pfs = doc.getElementsByTagName('script')[0];
+      pfs.parentNode.insertBefore(sws, pfs);
+    }
+  )(window, document, 'https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7');
   </script>
   <!-- END SABY WIDGET CODE -->
+
 </body>
 </html>
