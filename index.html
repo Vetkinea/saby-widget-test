@@ -3,46 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Обратная связь</title>
+
+  <!-- 1. Адаптивность -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- 2. Минимальный стиль -->
   <style>
-    :root {
-      --brand: #c62828;
+    :root{
+      --brand:#c62828;
+      --brand-dark:#a81f1f;
     }
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
     }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
+    h1{margin:0 0 8px;text-align:center;font-size:clamp(20px,6vw,32px)}
+    p {text-align:center;margin:0 0 12px;font-size:15px}
+    .saby-consultant-button{display:none}
+
+    #widgetBox{
+      width:100%;
+      max-width:420px;
     }
-    h1 {
-      margin: 0 0 8px;
-      text-align: center;
-      font-size: clamp(20px, 6vw, 32px);
+
+    @media(max-width:360px){
+      #widgetBox{max-width:100%}
     }
-    p {
-      text-align: center;
-      margin: 0 0 12px;
-      font-size: 15px;
-    }
-    .saby-consultant-button {
-      display: none;
-    }
-    #widgetBox {
-      width: 100%;
-      max-width: 420px;
-    }
-    @media (max-width: 360px) {
-      #widgetBox {
-        max-width: 100%;
-      }
-    }
+
+    /* Отключаем спиннер */
+    #loader { display: none !important; }
   </style>
 </head>
 <body>
@@ -51,21 +46,25 @@
   <p>Ниже виджет встроен прямо в страницу:</p>
 
   <div id="widgetBox">
-    <!-- BEGIN SABY WIDGET CODE -->
-    <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
-    (
-      function(win, doc, url) {
-        var sws = doc.createElement('script');
-        sws.type  = 'text/javascript';
-        sws.async = true;
-        sws.src   = url;
+      <div id="loader"></div>
+      <!-- BEGIN SABY WIDGET CODE -->
+      <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
+      (
+        function(win, doc, url) {
+          var sws = doc.createElement('script');
+          sws.type  = 'text/javascript';
+          sws.async = true;
+          sws.src   = url;
 
-        var ref = doc.getElementsByTagName('script')[0];
-        ref.parentNode.insertBefore(sws, ref);
-      }
-    )(window, document, "https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7");
-    </script>
-    <!-- END SABY WIDGET CODE -->
+          // удаляем лоадер сразу
+          doc.getElementById('loader').style.display='none';
+
+          var ref = doc.getElementsByTagName('script')[0];
+          ref.parentNode.insertBefore(sws, ref);
+        }
+      )(window, document, "https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7");
+      </script>
+      <!-- END SABY WIDGET CODE -->
   </div>
 
 </body>
