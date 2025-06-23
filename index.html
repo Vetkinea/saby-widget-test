@@ -2,43 +2,42 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Обратная связь</title>
+  <title>💡 Ваши идеи важны!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    :root {
-      --brand: #c62828;
-    }
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
       padding: 24px;
+      background: #fff;
+      color: #222;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 16px;
     }
+
     h1 {
-      margin: 0 0 8px;
+      margin: 0;
       text-align: center;
-      font-size: clamp(20px, 6vw, 32px);
-    }
-    p {
-      text-align: center;
-      margin: 0 0 12px;
-      font-size: 15px;
+      font-size: clamp(22px, 6vw, 30px);
     }
 
-    .saby-consultant-button {
-      display: none;
+    p {
+      text-align: center;
+      font-size: 16px;
+      max-width: 480px;
+      margin: 0;
     }
 
     #widgetBox {
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
     }
 
     @media (max-width: 360px) {
@@ -46,48 +45,26 @@
         max-width: 100%;
       }
     }
-
-    /* 👇 Спиннер оставляем, но делаем невидимым */
-    #loader {
-      width: 0;
-      height: 0;
-      overflow: hidden;
-      position: absolute;
-    }
   </style>
 </head>
 <body>
 
-  <h1>👋 Форма обратной связи</h1>
-  <p>Ниже виджет встроен прямо в страницу:</p>
+  <h1>💡 Ваши идеи важны!</h1>
+  <p>Поделитесь предложением или идеей по улучшению нашей работы — мы внимательно изучим каждое сообщение.<br>
+  Пожалуйста, заполните форму ниже и нажмите кнопку отправки. Обратная связь поможет сделать нас лучше!</p>
 
   <div id="widgetBox">
-    <div id="loader"></div>
-
     <!-- BEGIN SABY WIDGET CODE -->
     <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
     (
       function(win, doc, url) {
         var sws = doc.createElement('script');
-        sws.type  = 'text/javascript';
+        sws.type = 'text/javascript';
         sws.async = true;
-        sws.src   = url;
+        sws.src = url;
 
-        sws.onload = function(){
-          const waitForm = () => {
-            const frm = doc.querySelector('.saby-consultant-window');
-            if (frm) {
-              const loader = doc.getElementById('loader');
-              if (loader) loader.style.display = 'none'; // iOS ждёт этого
-            } else {
-              setTimeout(waitForm, 200);
-            }
-          };
-          waitForm();
-        };
-
-        var ref = doc.getElementsByTagName('script')[0];
-        ref.parentNode.insertBefore(sws, ref);
+        var pfs = doc.getElementsByTagName('script')[0];
+        pfs.parentNode.insertBefore(sws, pfs);
       }
     )(window, document, "https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7");
     </script>
