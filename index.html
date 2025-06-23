@@ -6,23 +6,14 @@
 </head>
 <body>
   <h1>Привет! 👋 Это страница с формой обратной связи</h1>
-  <p>Форма ниже встроена прямо в страницу и открыта сразу:</p>
+  <p>Форма ниже встроена через iframe:</p>
 
-  <!-- BEGIN SABY WIDGET CODE -->
-  <div id="saby-feedback-form"></div>
-  <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
-  (
-    function(win, doc, url) {
-      var sws = doc.createElement('script');
-      sws.type = 'text/javascript';
-      sws.async = true;
-      sws.src = url;
-
-      var pfs = doc.getElementsByTagName('script')[0];
-      pfs.parentNode.insertBefore(sws, pfs);
-    }
-  )(window, document, 'https://site.sbis.ru/consultant-widget/embed/c40f3220-16c4-4ee7-b996-7b12bd319ff7');
-  </script>
-  <!-- END SABY WIDGET CODE -->
+  <iframe 
+    src="https://site.sbis.ru/consultant-widget/form/c40f3220-16c4-4ee7-b996-7b12bd319ff7" 
+    width="100%" 
+    height="600" 
+    style="border: none;"
+    allowtransparency="true"
+  ></iframe>
 </body>
 </html>
