@@ -23,10 +23,8 @@
   <h1>Привет! 👋 Это страница с формой обратной связи</h1>
   <p>Нажми на кнопку ниже, чтобы открыть форму:</p>
 
-  <!-- Наша кнопка -->
-  <button class="my-feedback-button" onclick="openSabyFeedback()">Открыть форму</button>
-
-  <!-- Виджет Saby -->
+  <!-- Виджет СБИС — строго перед кнопкой -->
+  <!-- BEGIN SABY WIDGET CODE -->
   <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
   (
     function(win, doc, url) {
@@ -37,40 +35,14 @@
 
       var pfs = doc.getElementsByTagName('script')[0];
       pfs.parentNode.insertBefore(sws, pfs);
-
-      // Прячем стандартную кнопку после загрузки
-      sws.onload = () => {
-        const tryHide = () => {
-          const btn = document.querySelector('.saby-consultant-button');
-          if (btn) btn.style.display = 'none';
-          else setTimeout(tryHide, 300);
-        };
-        tryHide();
-      };
     }
-  )(window, document, 'https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7');
+  )(window, document, "https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7");
   </script>
+  <!-- END SABY WIDGET CODE -->
 
-  <!-- Открытие формы с ожиданием -->
-  <script>
-    function openSabyFeedback() {
-      const maxAttempts = 10;
-      let attempts = 0;
-
-      function tryOpen() {
-        if (window.SabyWidget && typeof window.SabyWidget.open === 'function') {
-          window.SabyWidget.open();
-        } else {
-          if (attempts++ < maxAttempts) {
-            setTimeout(tryOpen, 300);
-          } else {
-            alert('Виджет не успел загрузиться. Попробуй обновить страницу.');
-          }
-        }
-      }
-
-      tryOpen();
-    }
-  </script>
+  <!-- Наша кнопка -->
+  <button class="my-feedback-button" saby-consultant-button>
+    Открыть форму
+  </button>
 </body>
 </html>
