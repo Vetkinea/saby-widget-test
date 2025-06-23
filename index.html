@@ -3,12 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <title>Обратная связь</title>
+  <style>
+    /* Скрыть встроенную кнопку */
+    .saby-consultant-button {
+      display: none !important;
+    }
+
+    /* Своя кнопка */
+    .my-feedback-button {
+      background-color: #e33b40;
+      color: white;
+      font-size: 18px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .my-feedback-button:hover {
+      background-color: #c72f35;
+    }
+  </style>
 </head>
 <body>
   <h1>Привет! 👋 Это страница с формой обратной связи</h1>
-  <p>Нажми на кнопку внизу страницы, чтобы оставить сообщение:</p>
+  <p>Нажми на кнопку ниже, чтобы открыть форму:</p>
 
-  <!-- BEGIN SABY WIDGET CODE -->
+  <!-- Наша собственная кнопка -->
+  <button class="my-feedback-button" onclick="openSabyFeedback()">Открыть форму</button>
+
+  <!-- СКРИПТ SABY -->
   <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
   (
     function(win, doc, url) {
@@ -22,7 +47,16 @@
     }
   )(window, document, 'https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7');
   </script>
-  <!-- END SABY WIDGET CODE -->
 
+  <!-- Функция вызова формы -->
+  <script>
+    function openSabyFeedback() {
+      if (window.SabyWidget && typeof window.SabyWidget.open === 'function') {
+        window.SabyWidget.open();
+      } else {
+        alert('Виджет ещё загружается. Подожди пару секунд и попробуй снова.');
+      }
+    }
+  </script>
 </body>
 </html>
