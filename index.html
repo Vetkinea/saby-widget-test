@@ -8,21 +8,11 @@
       font-family: sans-serif;
       padding: 30px;
     }
-    .custom-button {
-      padding: 10px 20px;
-      background-color: #c62828;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
   <h1>Привет! 👋 Это страница с формой обратной связи</h1>
-  <p>Нажми на кнопку ниже, чтобы открыть форму:</p>
-  <button class="custom-button saby-consultant-button">Открыть форму</button>
+  <p>Форма ниже встроена прямо на страницу:</p>
 
   <!-- BEGIN SABY WIDGET CODE -->
   <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
@@ -39,32 +29,5 @@
   )(window, document, "https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7");
   </script>
   <!-- END SABY WIDGET CODE -->
-
-  <!-- Центрирование формы после открытия -->
-  <script>
-    function centerSabyForm() {
-      const tryCenter = () => {
-        const form = document.querySelector('.saby-consultant-window');
-        if (form) {
-          form.style.position = 'fixed';
-          form.style.top = '50%';
-          form.style.left = '50%';
-          form.style.transform = 'translate(-50%, -50%)';
-          form.style.right = 'auto';
-          form.style.bottom = 'auto';
-          form.style.zIndex = '9999';
-        } else {
-          setTimeout(tryCenter, 200);
-        }
-      };
-      tryCenter();
-    }
-
-    document.addEventListener('click', (e) => {
-      if (e.target.closest('.saby-consultant-button')) {
-        setTimeout(centerSabyForm, 100);
-      }
-    });
-  </script>
 </body>
 </html>
