@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Обратная связь</title>
   <style>
-    .saby-consultant-button {
-      background-color: #e33b40;
-      color: white;
-      font-size: 18px;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
+    body {
+      font-family: sans-serif;
+      padding: 30px;
     }
-
-    .saby-consultant-button:hover {
-      background-color: #c72f35;
+    .custom-button {
+      padding: 10px 20px;
+      background-color: #c62828;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <h1>Привет! 👋 Это страница с формой обратной связи</h1>
   <p>Нажми на кнопку ниже, чтобы открыть форму:</p>
+  <button class="custom-button saby-consultant-button">Открыть форму</button>
 
-  <!-- Подключение виджета СБИС -->
   <!-- BEGIN SABY WIDGET CODE -->
   <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
   (
@@ -41,7 +40,31 @@
   </script>
   <!-- END SABY WIDGET CODE -->
 
-  <!-- Наша пользовательская кнопка -->
-  <button class="saby-consultant-button">Открыть форму</button>
+  <!-- Центрирование формы после открытия -->
+  <script>
+    function centerSabyForm() {
+      const tryCenter = () => {
+        const form = document.querySelector('.saby-consultant-window');
+        if (form) {
+          form.style.position = 'fixed';
+          form.style.top = '50%';
+          form.style.left = '50%';
+          form.style.transform = 'translate(-50%, -50%)';
+          form.style.right = 'auto';
+          form.style.bottom = 'auto';
+          form.style.zIndex = '9999';
+        } else {
+          setTimeout(tryCenter, 200);
+        }
+      };
+      tryCenter();
+    }
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.saby-consultant-button')) {
+        setTimeout(centerSabyForm, 100);
+      }
+    });
+  </script>
 </body>
 </html>
