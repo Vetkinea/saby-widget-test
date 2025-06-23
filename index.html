@@ -4,48 +4,49 @@
   <meta charset="UTF-8">
   <title>Обратная связь</title>
 
-  <!-- 1. Адаптивность -->
+  <!-- Адаптивность -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- 2. Минимальный стиль -->
+  <!-- Минимальный стиль -->
   <style>
-    :root{
-      --brand:#c62828;
-      --brand-dark:#a81f1f;
+    :root {
+      --brand: #c62828;
+      --brand-dark: #a81f1f;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
-      padding:24px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:16px;
+    * {
+      box-sizing: border-box;
     }
-    h1{margin:0 0 8px;text-align:center;font-size:clamp(20px,6vw,32px)}
-    p {text-align:center;margin:0 0 12px;font-size:15px}
-    /* наша кнопка может пригодиться позже – оставил, но прячу */
-    .saby-consultant-button{display:none}
-
-    /* 2a. Контейнер под форму */
-    #widgetBox{
-      width:100%;
-      max-width:420px;   /* комфортная ширина на десктопе */
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
     }
-
-    /* 2b. На очень узких экранах слегка ужмём форму */
-    @media(max-width:360px){
-      #widgetBox{max-width:100%}
+    h1 {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: clamp(20px, 6vw, 32px);
     }
-
-    /* 3. Спиннер ожидания */
-    #loader{
-      width:32px;height:32px;border:4px solid var(--brand);
-      border-bottom-color:transparent;border-radius:50%;
-      animation:spin 0.9s linear infinite;margin:40px auto;
+    p {
+      text-align: center;
+      margin: 0 0 12px;
+      font-size: 15px;
     }
-    @keyframes spin{to{transform:rotate(360deg)}}
+    .saby-consultant-button {
+      display: none;
+    }
+    #widgetBox {
+      width: 100%;
+      max-width: 420px;
+    }
+    @media (max-width: 360px) {
+      #widgetBox {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -53,34 +54,33 @@
   <h1>👋 Форма обратной связи</h1>
   <p>Ниже виджет встроен прямо в страницу:</p>
 
-  <!-- контэйнер -->
+  <!-- Контейнер -->
   <div id="widgetBox">
-      <div id="loader"></div>
-      <!-- BEGIN SABY WIDGET CODE -->
-      <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
-      (
-        function(win, doc, url) {
-          var sws = doc.createElement('script');
-          sws.type  = 'text/javascript';
-          sws.async = true;
-          sws.src   = url;
+    <!-- BEGIN SABY WIDGET CODE -->
+    <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
+    (
+      function(win, doc, url) {
+        var sws = doc.createElement('script');
+        sws.type  = 'text/javascript';
+        sws.async = true;
+        sws.src   = url;
 
-          /* прячем лоадер, когда скрипт достаётся */
-          sws.onload = function(){
-            const waitForm = () =>{
-              const frm = doc.querySelector('.saby-consultant-window');
-              if(frm){ doc.getElementById('loader').style.display='none'; }
-              else   { setTimeout(waitForm,200); }
-            };
-            waitForm();
+        // Сохраняем onload для корректной работы на iOS
+        sws.onload = function(){
+          const waitForm = () =>{
+            const frm = doc.querySelector('.saby-consultant-window');
+            if(frm){ /* не делаем ничего */ }
+            else   { setTimeout(waitForm,200); }
           };
+          waitForm();
+        };
 
-          var ref = doc.getElementsByTagName('script')[0];
-          ref.parentNode.insertBefore(sws, ref);
-        }
-      )(window, document, "https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7");
-      </script>
-      <!-- END SABY WIDGET CODE -->
+        var ref = doc.getElementsByTagName('script')[0];
+        ref.parentNode.insertBefore(sws, ref);
+      }
+    )(window, document, "https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7");
+    </script>
+    <!-- END SABY WIDGET CODE -->
   </div>
 
 </body>
