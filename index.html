@@ -4,12 +4,6 @@
   <meta charset="UTF-8" />
   <title>Обратная связь</title>
   <style>
-    /* Скрыть встроенную кнопку */
-    .saby-consultant-button {
-      display: none !important;
-    }
-
-    /* Своя кнопка */
     .my-feedback-button {
       background-color: #e33b40;
       color: white;
@@ -20,7 +14,6 @@
       cursor: pointer;
       margin-top: 20px;
     }
-
     .my-feedback-button:hover {
       background-color: #c72f35;
     }
@@ -30,10 +23,10 @@
   <h1>Привет! 👋 Это страница с формой обратной связи</h1>
   <p>Нажми на кнопку ниже, чтобы открыть форму:</p>
 
-  <!-- Наша собственная кнопка -->
+  <!-- Наша кнопка -->
   <button class="my-feedback-button" onclick="openSabyFeedback()">Открыть форму</button>
 
-  <!-- СКРИПТ SABY -->
+  <!-- Виджет Saby -->
   <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
   (
     function(win, doc, url) {
@@ -44,18 +37,39 @@
 
       var pfs = doc.getElementsByTagName('script')[0];
       pfs.parentNode.insertBefore(sws, pfs);
+
+      // Прячем стандартную кнопку после загрузки
+      sws.onload = () => {
+        const tryHide = () => {
+          const btn = document.querySelector('.saby-consultant-button');
+          if (btn) btn.style.display = 'none';
+          else setTimeout(tryHide, 300);
+        };
+        tryHide();
+      };
     }
   )(window, document, 'https://site.sbis.ru/consultant-widget/script/c40f3220-16c4-4ee7-b996-7b12bd319ff7');
   </script>
 
-  <!-- Функция вызова формы -->
+  <!-- Открытие формы с ожиданием -->
   <script>
     function openSabyFeedback() {
-      if (window.SabyWidget && typeof window.SabyWidget.open === 'function') {
-        window.SabyWidget.open();
-      } else {
-        alert('Виджет ещё загружается. Подожди пару секунд и попробуй снова.');
+      const maxAttempts = 10;
+      let attempts = 0;
+
+      function tryOpen() {
+        if (window.SabyWidget && typeof window.SabyWidget.open === 'function') {
+          window.SabyWidget.open();
+        } else {
+          if (attempts++ < maxAttempts) {
+            setTimeout(tryOpen, 300);
+          } else {
+            alert('Виджет не успел загрузиться. Попробуй обновить страницу.');
+          }
+        }
       }
+
+      tryOpen();
     }
   </script>
 </body>
