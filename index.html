@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Обратная связь</title>
   <style>
-    .my-feedback-button {
+    .saby-consultant-button {
       background-color: #e33b40;
       color: white;
       font-size: 18px;
@@ -14,7 +14,8 @@
       cursor: pointer;
       margin-top: 20px;
     }
-    .my-feedback-button:hover {
+
+    .saby-consultant-button:hover {
       background-color: #c72f35;
     }
   </style>
@@ -23,7 +24,7 @@
   <h1>Привет! 👋 Это страница с формой обратной связи</h1>
   <p>Нажми на кнопку ниже, чтобы открыть форму:</p>
 
-  <!-- Виджет СБИС — строго перед кнопкой -->
+  <!-- Подключение виджета СБИС -->
   <!-- BEGIN SABY WIDGET CODE -->
   <script type="text/javascript" data-saby-widget="c40f3220-16c4-4ee7-b996-7b12bd319ff7">
   (
@@ -40,9 +41,7 @@
   </script>
   <!-- END SABY WIDGET CODE -->
 
-  <!-- Наша кнопка -->
-  <button class="my-feedback-button" saby-consultant-button>
-    Открыть форму
-  </button>
+  <!-- Наша пользовательская кнопка -->
+  <button class="saby-consultant-button">Открыть форму</button>
 </body>
 </html>
